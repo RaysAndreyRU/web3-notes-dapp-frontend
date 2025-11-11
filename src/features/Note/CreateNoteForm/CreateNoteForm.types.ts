@@ -1,4 +1,4 @@
-import type {CreateNoteDto} from "@src/entities/Note/api/schema.ts";
+import type {CreateNoteDto} from "@src/entities/Note/model/schema.ts";
 
 
 export interface CreateNoteFormProps {

@@ -1,4 +1,4 @@
-import type {Note} from "@src/entities/Note/api/schema.ts";
+import type {Note} from "@src/entities/Note/model/schema.ts";
 
 export type Props = {
     notes: Note[]

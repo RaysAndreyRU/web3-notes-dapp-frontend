@@ -1,42 +1,52 @@
-import { API_ROUTES } from "@src/shared/constants/api";
+import type { AxiosRequestConfig } from 'axios'
+import { API_ROUTES } from '@src/shared/constants/api'
+
 import {
     notesListSchema,
     noteResponseSchema,
     createNoteSchema,
     updateNoteSchema,
+    type NoteResponse,
     type CreateNoteDto,
-    type UpdateNoteDto,
-} from './schema'
-import {axiosInstance} from "@src/shared/constants/axios.ts";
+    type UpdateNoteDto, type NotesListResponse,
+} from '../model/schema.ts'
+import {apiClient} from "@src/shared/api";
 
-export const verifySession = async (token: string) => {
-    const response = await axiosInstance.post(API_ROUTES.auth.verifySession, { token })
-    return response.data
+
+export const getNotes = async (
+    options?: AxiosRequestConfig,
+): Promise<NotesListResponse> => {
+    return apiClient.get(API_ROUTES.notes.list, {}, { model: notesListSchema, ...options })
 }
 
-export const getNotes = async () => {
-    const response = await axiosInstance.get<unknown>(API_ROUTES.notes.list)
-    return notesListSchema.parse(response.data)
+export const getNote = async (
+    id: string | number,
+    options?: AxiosRequestConfig,
+): Promise<NoteResponse> => {
+    return apiClient.get(API_ROUTES.notes.get(id), {}, { model: noteResponseSchema, ...options })
 }
 
-export const getNote = async (id: number) => {
-    const response = await axiosInstance.get<unknown>(API_ROUTES.notes.get(id))
-    return noteResponseSchema.parse(response.data)
-}
-
-export const createNote = async (dto: CreateNoteDto) => {
+export const createNote = async (
+    dto: CreateNoteDto,
+    options?: AxiosRequestConfig,
+): Promise<NoteResponse> => {
     createNoteSchema.parse(dto)
-    const response = await axiosInstance.post<unknown>(API_ROUTES.notes.create, dto)
-    return noteResponseSchema.parse(response.data)
+    return apiClient.post(API_ROUTES.notes.create, dto, { model: noteResponseSchema, ...options })
 }
 
-export const updateNote = async (id: number, dto: UpdateNoteDto) => {
+export const updateNote = async (
+    id: string | number,
+    dto: UpdateNoteDto,
+    options?: AxiosRequestConfig,
+): Promise<NoteResponse> => {
     updateNoteSchema.parse(dto)
-    const response = await axiosInstance.put<unknown>(API_ROUTES.notes.update(id), dto)
-    return noteResponseSchema.parse(response.data)
+    return apiClient.put(API_ROUTES.notes.update(id), dto, { model: noteResponseSchema, ...options })
 }
 
-export const deleteNote = async (id: number) => {
-    await axiosInstance.delete(API_ROUTES.notes.delete(id))
+export const deleteNote = async (
+    id: string | number,
+    options?: AxiosRequestConfig,
+): Promise<string | number> => {
+    await apiClient.delete(API_ROUTES.notes.delete(id), {}, options)
     return id
 }

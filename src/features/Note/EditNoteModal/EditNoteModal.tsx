@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { EditNoteModalProps } from './EditNoteModal.types'
-import {type UpdateNoteDto, updateNoteSchema} from "@src/entities/Note/api/schema.ts";
+import {type UpdateNoteDto, updateNoteSchema} from "@src/entities/Note/model/schema.ts";
 import {Dialog, DialogContent, DialogHeader, DialogTitle} from "@src/shared/ui/dialog.tsx";
 import {Textarea} from "@src/shared/ui/textarea.tsx";
 import {Input} from "@src/shared/ui/input.tsx";

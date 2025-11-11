@@ -1,4 +1,4 @@
-import type {Note, UpdateNoteDto} from "@src/entities/Note/api/schema.ts";
+import type {Note, UpdateNoteDto} from "@src/entities/Note/model/schema.ts";
 
 
 export interface EditNoteModalProps {

@@ -10,7 +10,6 @@ export const HomePage = () => {
     const handleConnected = () => {
         navigate(routes.notes.url())
     }
-
     return (
         <div
             className={cn(

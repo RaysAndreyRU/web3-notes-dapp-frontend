@@ -1,5 +1,5 @@
 import { Button } from '@src/shared/ui/button.tsx'
-import type { Note } from '@src/entities/Note/api/schema.ts'
+import type { Note } from '@src/entities/Note/model/schema.ts'
 import { useLumiaPassportSession } from '@lumiapassport/ui-kit'
 import { decryptText } from '@src/shared/utils/crypto.ts'
 

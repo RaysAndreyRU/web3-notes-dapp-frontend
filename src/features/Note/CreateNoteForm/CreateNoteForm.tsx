@@ -4,7 +4,7 @@ import type { CreateNoteFormProps } from './CreateNoteForm.types'
 import {Input} from "@src/shared/ui/input.tsx";
 import {Textarea} from "@src/shared/ui/textarea.tsx";
 import {Button} from "@src/shared/ui/button.tsx";
-import {type CreateNoteDto, createNoteSchema} from "@src/entities/Note/api/schema.ts";
+import {type CreateNoteDto, createNoteSchema} from "@src/entities/Note/model/schema.ts";
 
 export const CreateNoteForm = ({ onSubmit }: CreateNoteFormProps) => {
     const {

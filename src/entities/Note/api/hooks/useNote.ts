@@ -1,5 +1,5 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
-import type {Note} from "@src/entities/Note/api/schema.ts";
+import type {Note} from "@src/entities/Note/model/schema.ts";
 import {QUERY_KEYS} from "@src/shared/constants/api.ts";
 import {getNote} from "@src/entities/Note/api/api.ts";
 

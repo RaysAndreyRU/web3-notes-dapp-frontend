@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type {CreateNoteDto, UpdateNoteDto} from "@src/entities/Note/api/schema.ts";
+import type {CreateNoteDto, UpdateNoteDto} from "@src/entities/Note/model/schema.ts";
 import {createNote, deleteNote, updateNote} from "@src/entities/Note/api/api.ts";
 import {QUERY_KEYS} from "@src/shared/constants/api.ts";
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNotes } from '@src/entities/Note/api/hooks/useNotes'
 import { useNoteMutations } from '@src/entities/Note/api/hooks/useNoteMutations'
-import type { Note } from '@src/entities/Note/api/schema'
+import type { Note } from '@src/entities/Note/model/schema.ts'
 
 import { Button } from '@src/shared/ui/button'
 import { Card } from '@src/shared/ui/card'

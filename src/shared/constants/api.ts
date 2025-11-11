@@ -1,10 +1,10 @@
 export const API_ROUTES = {
     notes: {
         list: '/api/notes',
-        get: (id: number) => `/api/notes/${id}`,
+        get: (id: number | string) => `/api/notes/${id}`,
         create: '/api/notes',
-        update: (id: number) => `/api/notes/${id}`,
-        delete: (id: number) => `/api/notes/${id}`,
+        update: (id: number | string) => `/api/notes/${id}`,
+        delete: (id: number | string) => `/api/notes/${id}`,
     },
 
     auth: {
