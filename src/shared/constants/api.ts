@@ -1,13 +1,24 @@
 export const API_ROUTES = {
-  users: {
-    list: '/v1/users',
-    get: (id: number) => `/v1/users/${id}`,
-  },
+    notes: {
+        list: '/api/notes',
+        get: (id: number) => `/api/notes/${id}`,
+        create: '/api/notes',
+        update: (id: number) => `/api/notes/${id}`,
+        delete: (id: number) => `/api/notes/${id}`,
+    },
+
+    auth: {
+        verifySession: '/api/auth/verify-session',
+    },
 }
 
+
 export const QUERY_KEYS = {
-  users: {
-    list: 'GET:/v1/users',
-    get: 'GET:/v1/users/:id',
-  },
+    notes: {
+        list: 'GET:/api/notes',
+        get: 'GET:/api/notes/:id',
+        create: 'POST:/api/notes',
+        update: 'PUT:/api/notes/:id',
+        delete: 'DELETE:/api/notes/:id',
+    },
 }
