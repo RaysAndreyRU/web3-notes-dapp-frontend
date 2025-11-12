@@ -1,8 +1,9 @@
-export const getLumiaAccessToken = (): string | null => {
+export const getLumiaAuthData = () => {
+    if (typeof window === 'undefined') return null
+    const raw = localStorage.getItem('lumia-passport-jwt-tokens')
+    if (!raw) return null
     try {
-        const stored = localStorage.getItem('lumia-passport-jwt-tokens')
-        if (!stored) return null
-        return JSON.parse(stored)?.accessToken ?? null
+        return JSON.parse(raw)
     } catch {
         return null
     }

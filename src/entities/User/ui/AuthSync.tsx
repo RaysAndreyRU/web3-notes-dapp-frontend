@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import { useLumiaPassportSession } from '@lumiapassport/ui-kit'
-import { useAuthStore } from '@src/entities/User/store'
 import { useVerifySession } from '@src/entities/User/api/hooks/useVerifySession'
-import { getLumiaAccessToken } from '@src/shared/utils/getLumiaAccessToken'
-
+import { useAuthStore } from '@src/entities/User/store'
+import {getLumiaAuthData} from "@src/shared/utils/getLumiaAccessToken.ts";
 
 export const AuthSync = () => {
     const { session, status } = useLumiaPassportSession()
@@ -12,16 +11,13 @@ export const AuthSync = () => {
 
     useEffect(() => {
         if (status === 'loading') return
-
-        const accessToken = getLumiaAccessToken()
-
-        if (accessToken && session) {
+        const authData = getLumiaAuthData()
+        if (authData && session) {
             if (!verifySession.isPending) {
-                verifySession.mutateAsync(accessToken)
+                verifySession.mutateAsync(authData)
             }
         } else {
             clearUser()
-            localStorage.clear()
         }
     }, [session, status])
 
