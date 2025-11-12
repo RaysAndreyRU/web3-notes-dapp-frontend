@@ -6,7 +6,7 @@
   "scripts": {
     "i18n:extract": "npx i18next-parser --config ./i18next-parser.config.js",
     "dev": "vite",
-    "build": "npm run i18n:extract && tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "typecheck": "tsc --noEmit",
     "pretty": "prettier --write \"./src/**/*.{ts,tsx,json}\"",
     "lint": "eslint .",
