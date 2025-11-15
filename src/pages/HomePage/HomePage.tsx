@@ -1,4 +1,4 @@
-import { Card } from '@src/shared/ui/card'
+import { Card } from '@src/shared/ui/shadcn/card.tsx'
 import { cn } from '@src/shared/utils/cn'
 import { useNavigate } from 'react-router-dom'
 import { routes } from '@src/app/constants/routes'

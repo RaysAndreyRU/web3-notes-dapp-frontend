@@ -1,5 +1,5 @@
-import {Card} from "@src/shared/ui/card.tsx";
-import {Skeleton} from "@src/shared/ui/skeleton.tsx";
+import {Card} from "@src/shared/ui/shadcn/card.tsx";
+import {Skeleton} from "@src/shared/ui/shadcn/skeleton.tsx";
 
 
 export const NoteCardSkeleton = () => {

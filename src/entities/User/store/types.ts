@@ -1,9 +1,10 @@
-import type {User} from "@src/entities/User/model/schema.ts";
+import type { User } from '../model/schema'
 
 export interface IAuthStore {
     user: User | null
+    token: string | null
     isAuthenticated: boolean
 
-    setUser: (user: User) => void
+    setSession: (data: { user: User; token: string }) => void
     clearUser: () => void
 }

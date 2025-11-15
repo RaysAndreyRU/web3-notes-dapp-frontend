@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { CreateNoteFormProps } from './CreateNoteForm.types'
-import {Input} from "@src/shared/ui/input.tsx";
-import {Textarea} from "@src/shared/ui/textarea.tsx";
-import {Button} from "@src/shared/ui/button.tsx";
+import {Input} from "@src/shared/ui/shadcn/input.tsx";
+import {Textarea} from "@src/shared/ui/shadcn/textarea.tsx";
+import {Button} from "@src/shared/ui/shadcn/button.tsx";
 import {type CreateNoteDto, createNoteSchema} from "@src/entities/Note/model/schema.ts";
 
 export const CreateNoteForm = ({ onSubmit }: CreateNoteFormProps) => {

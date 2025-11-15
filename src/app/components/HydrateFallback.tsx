@@ -1,4 +1,4 @@
-import { Spinner } from '@src/shared/ui/Spinner'
+import { Spinner } from '@src/shared/ui/shadcn/Spinner.tsx'
 
 export const HydrateFallback = () => {
   return (

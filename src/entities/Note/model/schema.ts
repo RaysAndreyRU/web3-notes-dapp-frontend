@@ -4,7 +4,6 @@ export const noteSchema = z.object({
     id: z.number(),
     title: z.string(),
     content: z.string(),
-    userId: z.number(),
     createdAt: z.string(),
     updatedAt: z.string(),
 })
@@ -13,11 +12,16 @@ export const createNoteSchema = z.object({
     title: z.string().min(1, 'Title is required'),
     content: z.string().min(1, 'Content is required'),
 })
-
 export const updateNoteSchema = createNoteSchema.partial()
 
 export const noteResponseSchema = noteSchema
-export const notesListSchema = z.array(noteSchema)
+
+export const notesListSchema = z.object({
+    items: z.array(noteSchema),
+    total: z.number(),
+    skip: z.number(),
+    take: z.number(),
+})
 
 export type Note = z.infer<typeof noteSchema>
 export type CreateNoteDto = z.infer<typeof createNoteSchema>

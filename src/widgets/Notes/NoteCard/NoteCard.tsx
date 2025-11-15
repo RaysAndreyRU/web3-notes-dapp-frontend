@@ -1,4 +1,4 @@
-import { Button } from '@src/shared/ui/button.tsx'
+import { Button } from '@src/shared/ui/shadcn/button.tsx'
 import type { Note } from '@src/entities/Note/model/schema.ts'
 import { useLumiaPassportSession } from '@lumiapassport/ui-kit'
 import { decryptText } from '@src/shared/utils/crypto.ts'

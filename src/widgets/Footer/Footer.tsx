@@ -1,6 +1,6 @@
 import type { FooterProps } from './Footer.types'
 import {cn} from "@src/shared/utils/cn.ts";
-import {Separator} from "@src/shared/ui/separator.tsx";
+import {Separator} from "@src/shared/ui/shadcn/separator.tsx";
 
 export const Footer = ({ className, showCredits = true, customText }: FooterProps) => {
     return (

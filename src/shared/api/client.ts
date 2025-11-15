@@ -1,5 +1,5 @@
-import axios, { HttpStatusCode, type AxiosInstance } from 'axios'
-import config from './config.ts'
+import axios, { AxiosHeaders, HttpStatusCode, type AxiosInstance } from 'axios'
+import config from './config'
 
 export const createClient = () => {
     const instance: AxiosInstance = axios.create({
@@ -8,29 +8,20 @@ export const createClient = () => {
     })
 
     const clearAuthentication = () => {
-        localStorage.clear()
+        localStorage.removeItem('token')
     }
-    instance.interceptors.request.use((config) => {
-        const stored = localStorage.getItem('lumia-passport-jwt-tokens')
 
-        if (stored) {
-            try {
-                const parsed = JSON.parse(stored)
-                const token = parsed?.accessToken
-                if (token) {
-                    config.headers = config.headers || {}
-                    ;(config.headers as any).common = {
-                        ...(config.headers as any).common,
-                        Authorization: `Bearer ${token}`,
-                    }
-                }
-            } catch {
-                console.warn('Invalid Lumia Passport data in localStorage')
-            }
+    instance.interceptors.request.use((config) => {
+        const token = localStorage.getItem('token')
+
+        if (token) {
+            config.headers = AxiosHeaders.from(config.headers || {})
+            config.headers.set('Authorization', `Bearer ${token}`)
         }
 
         return config
     })
+
     instance.interceptors.response.use(
         (response) => {
             const { model, modelDictionary, flattenDictionary } = response.config
@@ -48,10 +39,8 @@ export const createClient = () => {
                 if (modelDictionary && !flattenDictionary) {
                     const result: Record<string, unknown> = {}
                     for (const key in rawData) {
-                        if (Object.prototype.hasOwnProperty.call(rawData, key)) {
-                            const value = rawData[key as keyof typeof rawData]
-                            result[key] = model.parse(value)
-                        }
+                        const value = rawData[key as keyof typeof rawData]
+                        result[key] = model.parse(value)
                     }
                     response.data = result
                 } else {
@@ -62,9 +51,13 @@ export const createClient = () => {
             return response
         },
         (error) => {
-            if (error.response?.status === HttpStatusCode.Unauthorized) {
+            const status = error.response?.status
+            const code = error.response?.data?.error
+
+            if (status === HttpStatusCode.Unauthorized && code === 'AUTH_INVALID_TOKEN') {
                 clearAuthentication()
             }
+
             return Promise.reject(error)
         },
     )

@@ -14,9 +14,14 @@ import {apiClient} from "@src/shared/api";
 
 
 export const getNotes = async (
+    params?: { skip?: number; take?: number },
     options?: AxiosRequestConfig,
 ): Promise<NotesListResponse> => {
-    return apiClient.get(API_ROUTES.notes.list, {}, { model: notesListSchema, ...options })
+    return apiClient.get(
+        API_ROUTES.notes.list,
+        params ?? {},
+        { model: notesListSchema, ...options }
+    )
 }
 
 export const getNote = async (

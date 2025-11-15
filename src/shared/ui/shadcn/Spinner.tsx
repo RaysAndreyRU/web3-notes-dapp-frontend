@@ -1,6 +1,6 @@
 import { LoaderIcon } from 'lucide-react'
 
-import { cn } from '@src/shared/utils/cn'
+import { cn } from '@src/shared/utils/cn.ts'
 
 type SpinnerProps = {
   className?: string

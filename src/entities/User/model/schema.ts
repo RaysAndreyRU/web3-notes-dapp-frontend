@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const userSchema = z.object({
-    id: z.number().optional(),
+    id: z.string(),
     walletAddress: z.string(),
     createdAt: z.string().optional(),
 })
@@ -19,6 +19,12 @@ export const AuthDataSchema = z.object({
     avatar: z.string().nullable().optional(),
     providers: z.array(z.string()).optional(),
 })
+export const authVerifyResponseSchema = z.object({
+    user: userSchema,
+    token: z.string(),
+})
+
+export type AuthVerifyResponse = z.infer<typeof authVerifyResponseSchema>
 
 export type AuthDataDto = z.infer<typeof AuthDataSchema>
 
