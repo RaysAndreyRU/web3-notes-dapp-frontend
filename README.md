@@ -8,7 +8,7 @@
 ## Features
 
 -  **Web3 Authentication** via [Lumia Passport](https://www.lumiapassport.io)
--  **Encrypted Notes UI** — create, view, and manage your own blockchain-linked notes
+-  **Client-side encryption demo** — create, view, and manage notes stored as ciphertext by the backend
 -  **Vite + React + TypeScript** — ultra-fast build and development environment
 -  **Feature-Sliced Design** — scalable modular architecture for frontend projects
 -  **Modern UI** with reusable shared components
@@ -35,6 +35,8 @@
 
 Follows the **[Feature-Sliced Design](https://feature-sliced.design/)** methodology:
 Each layer is **independent**, **scalable**, and follows clear responsibility boundaries.
+
+> Security note: this reference implementation derives its encryption input from the connected wallet address. It demonstrates the client/server ciphertext flow but must not be treated as production-grade confidential storage without a private key-derivation and key-management design.
 
 ---
 
